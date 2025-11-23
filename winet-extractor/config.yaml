@@ -3,7 +3,7 @@ description: 'Extracts data from WiNet devices and sends to Home Assistant over 
 version: '0.2.2'
 stage: 'stable'
 slug: 'winet-extractor'
-url: 'https://github.com/NickStallman/home-assistant-repo/tree/main/winet-extractor'
+url: 'https://github.com/renetrussellcullen-debug/home-assistant-repo.git'
 arch:
   - armhf
   - armv7
@@ -33,6 +33,7 @@ options:
 
 schema:
   winet_host: str
+  winet_port: str
   mqtt_url: str
   winet_user: str?
   winet_pass: str?
