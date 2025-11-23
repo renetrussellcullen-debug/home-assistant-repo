@@ -26,6 +26,7 @@ const logger = Winston.createLogger({
 
 let options = {
   winet_host: '',
+  winet_port: '',
   mqtt_url: '',
   winet_user: '',
   winet_pass: '',
@@ -42,6 +43,7 @@ if (fs.existsSync('/data/options.json')) {
   dotenv.config();
 
   options.winet_host = process.env.WINET_HOST || '';
+    options.winet_port = process.env.WINET_PORT || '';
   options.mqtt_url = process.env.MQTT_URL || '';
   options.winet_user = process.env.WINET_USER || '';
   options.winet_pass = process.env.WINET_PASS || '';
@@ -66,6 +68,7 @@ const mqtt = new MqttPublisher(logger, options.mqtt_url);
 const winet = new winetHandler(
   logger,
   options.winet_host,
+  options.winet_port,
   lang,
   frequency,
   options.winet_user || '',

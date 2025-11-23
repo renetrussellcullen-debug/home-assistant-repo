@@ -20,6 +20,7 @@ export class winetHandler {
   private logger: Winston.Logger;
   private properties!: Properties;
   private host: string;
+  
   private ssl: boolean;
   private lang: string;
   private frequency: number;
@@ -29,7 +30,7 @@ export class winetHandler {
   ) => void;
   private ws!: Websocket;
   private analytics: Analytics;
-
+  private port = '';
   private winetUser = '';
   private winetPass = '';
 
@@ -51,6 +52,7 @@ export class winetHandler {
   constructor(
     logger: Winston.Logger,
     host: string,
+    port: string,
     lang: string,
     frequency: number,
     winetUser: string,
@@ -62,6 +64,11 @@ export class winetHandler {
     this.ssl = false;
     this.lang = lang;
     this.frequency = frequency;
+    if (port) {
+      this.port = port;
+    } else {
+      this.port = '8082';
+    }
     if (winetUser) {
       this.winetUser = winetUser;
     } else {
@@ -134,7 +141,7 @@ export class winetHandler {
     this.ws = new Websocket(
       this.ssl
         ? `wss://${this.host}:443/ws/home/overview`
-        : `ws://${this.host}:8082/ws/home/overview`,
+        : `ws://${this.host}:${this.port}/ws/home/overview`,
       wsOptions
     );
 

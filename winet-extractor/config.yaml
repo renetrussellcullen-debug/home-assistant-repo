@@ -23,6 +23,7 @@ services:
 
 options:
   winet_host: ''
+  winet_port: ''
   mqtt_url: ''
   winet_user: ''
   winet_pass: ''
