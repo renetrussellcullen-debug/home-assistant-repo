@@ -56,7 +56,10 @@ if (!options.winet_host) {
   console.log(process.env);
   throw new Error('No host provided');
 }
-
+if (!options.winet_port) {
+  console.log(process.env);
+  throw new Error('No port provided. Default is 8082');
+}
 if (!options.mqtt_url) {
   throw new Error('No mqtt provided');
 }
@@ -122,7 +125,7 @@ winet.setCallback((devices, deviceStatus) => {
   }
 });
 
-getProperties(logger, options.winet_host, lang, options.ssl)
+getProperties(logger, options.winet_host, options.winet_port, lang, options.ssl)
   .then(result => {
     logger.info(`Fetched i18n properties.`);
 
