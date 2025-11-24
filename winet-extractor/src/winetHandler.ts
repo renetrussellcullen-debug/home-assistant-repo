@@ -20,7 +20,7 @@ export class winetHandler {
   private logger: Winston.Logger;
   private properties!: Properties;
   private host: string;
-  
+  private port = '';
   private ssl: boolean;
   private lang: string;
   private frequency: number;
@@ -30,7 +30,7 @@ export class winetHandler {
   ) => void;
   private ws!: Websocket;
   private analytics: Analytics;
-  private port = '';
+  
   private winetUser = '';
   private winetPass = '';
 
